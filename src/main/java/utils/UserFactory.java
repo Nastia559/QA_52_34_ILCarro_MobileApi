@@ -11,7 +11,7 @@ public class UserFactory {
                 .firstName(faker.name().firstName())
                 .lastName(faker.name().lastName())
                 .username(faker.internet().emailAddress())
-                .password("Qwerty789")
+                .password("Qwerty156!")
                 .build();
         return user;
     }
