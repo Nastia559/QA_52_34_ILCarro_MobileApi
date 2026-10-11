@@ -1,30 +1,21 @@
 package utils;
 
-import dto.UserLombok;
+import dto.User;
 import net.datafaker.Faker;
-
-import static utils.PropertiesReader.getProperty;
 
 public class UserFactory {
     static Faker faker = new Faker();
 
-    public static UserLombok positiveUser(){
-        UserLombok user = UserLombok.builder()
+    public static User positiveUser(){
+        User user = User.builder()
+                .firstName(faker.name().firstName())
+                .lastName(faker.name().lastName())
                 .username(faker.internet().emailAddress())
-                .password(getProperty("base.properties", "password"))
+                .password("Qwerty789")
                 .build();
         return user;
     }
 
-    public static UserLombok positiveRegistrationUser(){
-        UserLombok user = UserLombok.builder()
-                .firstName(faker.name().firstName())
-                .lastName(faker.name().lastName())
-                .username(faker.internet().emailAddress())
-                .password(getProperty("base.properties", "password_for_registration"))
-                .build();
-        return user;
-    }
 }
 
 
