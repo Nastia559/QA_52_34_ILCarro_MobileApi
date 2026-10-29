@@ -1,6 +1,7 @@
 package controllers;
 
 import dto.Car;
+import dto.CarsDto;
 import dto.TokenDto;
 import dto.User;
 import io.restassured.http.ContentType;
@@ -39,5 +40,17 @@ public class CarController implements BaseApi {
                 .when()
                 .post(BASE_URL + ADD_CAR_URL)
                 .thenReturn();
+    }
+
+    public int getCarsCount(){
+        CarsDto cars = given()
+                .contentType(ContentType.JSON)
+                .header(AUTH, tokenDto.getAccessToken())
+                .when()
+                .get(BASE_URL + GET_ALL_CARS)
+                .then()
+                .statusCode(200)
+                .extract().as(CarsDto.class);
+        return cars.getCars().length;
     }
 }

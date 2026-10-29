@@ -8,10 +8,13 @@ import org.testng.annotations.Test;
 
 public class TestBase {
     protected static AppiumDriver driver;
+    public static int height = 0, width = 0;
 
     @BeforeMethod
     public void setup(){
         driver = AppiumConfig.createAppiumDriver();
+        height = driver.manage().window().getSize().getHeight();
+        width = driver.manage().window().getSize().getWidth();
     }
 
     @Test(enabled = false)
